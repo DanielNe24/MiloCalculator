@@ -75,7 +75,6 @@ function showResults( whichUse ) {
 
 		y = 15 + (parseFloat(pipeLength) + parseFloat(pipeTurns)) * parseFloat(contra);
 	}
-	minDiamter = 12;
 	console.log("User's coordinate is: (" + x + "," + y + ")");
 	var matches = [];
 	for (var i in Products) {
@@ -104,33 +103,12 @@ function showResults( whichUse ) {
 					if (y <= val)  {
 						matches.push(Products[i].DisplayName);
 						console.log("MATCH: " + Products[i].DisplayName);
-						if (Products[i].diameter < minDiamter) {
-							minDiamter = Products[i].diameter;
-						}
 					}
 					break;
 				}
   			}
   		}
   	}
-  	if (diameter == 'unknown') {
-  		
-  		for (var i in matches) {
-			var currProd;
-			for (var j in Products) {
-
-				 if (Products[j].DisplayName == matches[i]) {
-				 	currProd = Products[j];
-				 	break;
-				 }
-			}
-			if ( currProd.diameter > minDiamter ) {
-				var index = $.inArray(currProd.DisplayName , matches);
-				matches.splice(index, 1);
-			}
-		}
-	}
-
 
   	return matches;
 }
@@ -154,6 +132,31 @@ function results() {
 		console.log('################################################')
 		matches = showResults(3);
 	}
+
+	var diameter;
+	if ( $( "#diameter" ).val() == null ) 
+		diameter = 'unknown';
+    else 
+		diameter = $( "#diameter" ).val();
+
+	if (diameter == 'unknown') {
+  		if ( ( $.inArray('E-100', matches) >= 0 ) && ( $.inArray('E-150', matches) >= 0 ) ) {
+			var index = $.inArray('E-150', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('B-10 PLUS', matches) >= 0 ) && ( $.inArray('B-15 PLUS', matches) >= 0 ) ) {
+			var index = $.inArray('B-15 PLUS', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('LHV-190', matches) >= 0 ) && ( $.inArray('LHV-300', matches) >= 0 ) ) {
+			var index = $.inArray('LHV-300', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('CB-100', matches) >= 0 ) && ( $.inArray('CB-100 PLUS', matches) >= 0 ) ) {
+			var index = $.inArray('CB-100 PLUS', matches);
+			matches.splice(index, 1);
+		}
+  	}
 	
 	var swiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
