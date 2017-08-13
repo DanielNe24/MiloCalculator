@@ -75,6 +75,7 @@ function showResults( whichUse ) {
 
 		y = 15 + (parseFloat(pipeLength) + parseFloat(pipeTurns)) * parseFloat(contra);
 	}
+	minDiamter = 12;
 	console.log("User's coordinate is: (" + x + "," + y + ")");
 	var matches = [];
 	for (var i in Products) {
@@ -103,12 +104,33 @@ function showResults( whichUse ) {
 					if (y <= val)  {
 						matches.push(Products[i].DisplayName);
 						console.log("MATCH: " + Products[i].DisplayName);
+						if (Products[i].diameter < minDiamter) {
+							minDiamter = Products[i].diameter;
+						}
 					}
 					break;
 				}
   			}
   		}
   	}
+  	if (diameter == 'unknown') {
+  		
+  		for (var i in matches) {
+			var currProd;
+			for (var j in Products) {
+
+				 if (Products[j].DisplayName == matches[i]) {
+				 	currProd = Products[j];
+				 	break;
+				 }
+			}
+			if ( currProd.diameter > minDiamter ) {
+				var index = $.inArray(currProd.DisplayName , matches);
+				matches.splice(index, 1);
+			}
+		}
+	}
+
 
   	return matches;
 }
