@@ -160,8 +160,14 @@ function results() {
 		if ($('#exportRes').length > 0) {
 			$('#exportRes').remove();
 		}
-		
-
+		if ($.inArray('DIL 100/130', matches) >= 0) {
+			var index = $.inArray('DIL 100/130', matches);
+			matches.splice(index, 1);
+		}
+		if ($.inArray('MT-150', matches) >= 0) {
+			var index = $.inArray('MT-150', matches);
+			matches.splice(index, 1);
+		}
 		if ( ( $.inArray('DIL 200/910 High Speed', matches) >= 0 ) && ( $.inArray('DIL 200/910 Low Speed', matches) >= 0 ) ) {
 			var index = $.inArray('DIL 200/910 High Speed', matches);
 			matches.splice(index, 1);
@@ -415,7 +421,7 @@ function engResults() {
    			return 0 
 		}) 
 
-		matches = matches.slice(0, 3);
+		//matches = matches.slice(0, 3);
 
 		var results = document.getElementById("results");
 		var button = document.createElement("button");
