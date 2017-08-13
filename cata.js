@@ -140,22 +140,7 @@ function results() {
 		diameter = $( "#diameter" ).val();
 
 	if (diameter == 'unknown') {
-  		if ( ( $.inArray('E-100', matches) >= 0 ) && ( $.inArray('E-150', matches) >= 0 ) ) {
-			var index = $.inArray('E-150', matches);
-			matches.splice(index, 1);
-		}
-		if ( ( $.inArray('B-10 PLUS', matches) >= 0 ) && ( $.inArray('B-15 PLUS', matches) >= 0 ) ) {
-			var index = $.inArray('B-15 PLUS', matches);
-			matches.splice(index, 1);
-		}
-		if ( ( $.inArray('LHV-190', matches) >= 0 ) && ( $.inArray('LHV-300', matches) >= 0 ) ) {
-			var index = $.inArray('LHV-300', matches);
-			matches.splice(index, 1);
-		}
-		if ( ( $.inArray('CB-100', matches) >= 0 ) && ( $.inArray('CB-100 PLUS', matches) >= 0 ) ) {
-			var index = $.inArray('CB-100 PLUS', matches);
-			matches.splice(index, 1);
-		}
+  		ifUnknown(matches);
   	}
 	
 	var swiper = new Swiper('.swiper-container', {
@@ -376,11 +361,7 @@ function engResults() {
 	var x = $( "#cfm" ).val() * 1.7;
 	var y = $( "#resistance" ).val();
 	if ( y == "" || !$.isNumeric(y)) {alert('Enter numeric Pa');return 'ERROR'; }
-	var diameter;
-	if ( $( "#diameter" ).val() == null ) 
-		diameter = 'unknown';
-    else 
-		diameter = $( "#diameter" ).val();
+
 
 	var swiper = new Swiper('.swiper-container', {
         	pagination: '.swiper-pagination',
@@ -394,7 +375,18 @@ function engResults() {
     document.getElementById("container").setAttribute("style", "height:500px")
 	$( "#resultsViewer" ).empty();
 	var matches = showResultsEng(x, y, diameter);
+
 	if  ( matches.length > 0 ) {
+
+		var diameter;
+		if ( $( "#diameter" ).val() == null ) 
+			diameter = 'unknown';
+   		else 
+			diameter = $( "#diameter" ).val();
+
+		if (diameter == 'unknown') {
+  			ifUnknown(matches);
+  		}
 
 		if ($('#exportRes').length > 0) {
 			$('#exportRes').remove();
@@ -536,4 +528,77 @@ function getPriority( element ) {
 		if ( Products[j].DisplayName == element ) 
 			return Products[j].priority;
 	}
+}
+
+function ifUnknown(matches){
+
+	if ( ( $.inArray('E-100', matches) >= 0 ) && ( $.inArray('E-150', matches) >= 0 ) ) {
+			var index = $.inArray('E-150', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('B-10 PLUS', matches) >= 0 ) && ( $.inArray('B-15 PLUS', matches) >= 0 ) ) {
+			var index = $.inArray('B-15 PLUS', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('LHV-190', matches) >= 0 ) && ( $.inArray('LHV-300', matches) >= 0 ) ) {
+			var index = $.inArray('LHV-300', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('CB-100', matches) >= 0 ) && ( $.inArray('CB-100 PLUS', matches) >= 0 ) ) {
+			var index = $.inArray('CB-100 PLUS', matches);
+			matches.splice(index, 1);
+		}
+		if ( ( $.inArray('DIL 100/130', matches) >= 0 )) {
+			arr = ['DIL 100/270 Low Speed', 'DIL 100/270 High Speed'
+			, 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
+			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
+			for (var i in arr) {
+				var index = $.inArray(arr[i], matches);
+				if (index > 0)
+					matches.splice(index, 1);
+			}
+		}
+		if ( ( $.inArray('DIL 100/270 Low Speed', matches) >= 0 )) {
+			arr = ['DIL 100/270 High Speed', 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
+			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
+			for (var i in arr) {
+				var index = $.inArray(arr[i], matches);
+				if (index > 0)
+					matches.splice(index, 1);
+			}
+		}
+		if ( ( $.inArray('DIL 100/270 High Speed', matches) >= 0 )) {
+			arr = ['DIL 100/130', 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
+			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
+			for (var i in arr) {
+				var index = $.inArray(arr[i], matches);
+				if (index > 0)
+					matches.splice(index, 1);
+			}
+		}
+		if ( ( $.inArray('DIL 150/560 Low Speed', matches) >= 0 )) {
+			arr = ['DIL 150/560 High Speed','DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
+			for (var i in arr) {
+				var index = $.inArray(arr[i], matches);
+				if (index > 0)
+					matches.splice(index, 1);
+			}
+		}
+		if ( ( $.inArray('DIL 150/560 High Speed', matches) >= 0 )) {
+			arr = ['DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
+			for (var i in arr) {
+				var index = $.inArray(arr[i], matches);
+				if (index > 0)
+					matches.splice(index, 1);
+			}
+		}
+		if ( ( $.inArray('DIL 200/910 Low Speed', matches) >= 0 )) {
+			arr = ['DIL 200/910 High Speed']
+			for (var i in arr) {
+				var index = $.inArray(arr[i], matches);
+				if (index > 0)
+					matches.splice(index, 1);
+			}
+		}
+
 }
