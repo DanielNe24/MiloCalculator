@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  	<link href="prettify.css" rel="stylesheet">
+  	 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="swiper.min.css">
+
+    <title>Cata Calculator</title>
+  </head>
+  <body onload="loadData()" style="font-size: large;">
+  	<div class="span11" dir="rtl">
+		<div class="header">
+          	<img style="width: 200px;height: 70px;display:block;margin:auto;" src="logo.png"></img>
+        </div>
+        <button class="engineer" id="engineer" onclick="engineerMode()">אני מהנדס</button>
+        <br>
+        <div id="console">
+        <div class="content">
+      <u>גודל החלל:</u>&nbsp&nbsp&nbsp&nbsp
+			אורך  <input type="text" class="textInput" id="length" onchange="calcVol()"> (מ')
+			&nbspרוחב <input type="text" class="textInput" id="width" onchange="calcVol()"> (מ')
+  		&nbspגובה <input type="text" class="textInput" id="height" onchange="calcVol()"> (מ')
+      <hr width="1" size="30">
+      נפח מחושב: <input type="text" class="textInput" id="volume" readonly style="text-align: center;">
+  		<hr>
+  		<div class="content">
+  סיווג כללי: <select id="generalUse" onchange="fillSelect()">
+ 				<option selected="true" disabled="disabled">בחר סיווג כללי</option>
+ 				<option value="home">ביתי</option>
+ 				<option value="office">משרד</option>
+  				<option value="business">בתי עסק</option>
+ 				<option value="public">ציבורי</option>
+ 				<option value="industry">תעשייה</option>
+			</select>
+			<br>
+			<br>
+   סוג החדר: <select id="use"></select>
+  		</div>
+  		<hr>
+        <form id="pipe" action="" style="width:60%;margin:0 auto;">
+          <div class="switch-field" dir="rtl" style="height:auto;margin:0 auto;">
+            <input type="radio" name="radio" id="switch_3_left" onclick="hideTab4()" value="wall"/>
+          <label for="switch_3_left">קיר חיצוני / חלון</label>
+          <input type="radio" name="radio" id="switch_3_center" onclick="showTab4()" value="hard"/>
+          <label for="switch_3_center">צינור קשיח</label>
+          <input type="radio" name="radio" id="switch_3_right" onclick="showTab4()" value="soft"/>
+          <label for="switch_3_right">צינור גמיש</label>
+          </div>
+        </form>
+        <br>
+  קוטר: <select id="diameter">
+          <option selected="true" disabled="disabled">בחר קוטר</option>
+          <option value="4">4"</option>
+          <option value="6">6"</option>
+          <option value="8">8"</option>
+          <option value="12">12"</option>
+          <option value="unknown">לא ידוע</option>
+        </select> (צול)
+  		</div>
+  		<hr>
+  		<div class="content" id="pipeSet">
+  אורך צינור: <input type="text" class="textInput" id="pipeLength">
+&nbsp&nbspמספר כיפופים: <input type="text" class="textInput" id="pipeTurns">
+  		</div>
+  		<div class="contentNotRmv">
+  			<button type="button" id='res' onclick="results()">הראה תוצאות</button>
+  		</div>
+      <hr>
+      <div id="results">
+  		  <div class="swiper-container" id="container" dir="rtl">
+        	<div class="swiper-wrapper" id="resultsViewer">
+        	</div>
+        	<!-- Add Pagination -->
+        	<div class="swiper-pagination swiper-pagination-black"></div>
+        	<!-- Add Navigation -->
+        	<div class="swiper-button-prev swiper-button-black"></div>
+        	<div class="swiper-button-next swiper-button-black"></div>
+   		 </div>
+   		</div>
+   		<hr>
+        <footer style="height:30px;">
+        <p style="float: left;">&copy; MiloTrade 2017</p>
+        <img src="miloTradeLogo.png" height="30" width="35" style="float: right;"></img>
+      	</footer>
+   		</div>
+    </div>
+   	<script src="http://code.jquery.com/jquery-latest.js"></script>
+   	<script src="cata.js"></script>
+		<script src="graph.js"></script>
+		<script src="math.js"></script>
+		<script src="data.js"></script>
+		<script src="swiper.min.js"></script>
+
+
+  </body>
+</html>
