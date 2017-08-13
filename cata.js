@@ -378,18 +378,21 @@ function engResults() {
         	speed: 600,
         	height: 600,
     });	
+
+	var diameter;
+	if ( $( "#diameter" ).val() == null ) 
+		diameter = 'unknown';
+   	else 
+		diameter = $( "#diameter" ).val();
+
+
     document.getElementById("container").setAttribute("style", "height:500px")
 	$( "#resultsViewer" ).empty();
 	var matches = showResultsEng(x, y, diameter);
 
 	if  ( matches.length > 0 ) {
 
-		var diameter;
-		if ( $( "#diameter" ).val() == null ) 
-			diameter = 'unknown';
-   		else 
-			diameter = $( "#diameter" ).val();
-
+		
 		if (diameter == 'unknown') {
   			ifUnknown(matches);
   		}
