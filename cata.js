@@ -59,7 +59,7 @@ function showResults( whichUse ) {
 	var pipe = $('input[name=radio]:checked', '#pipe').val();
 	var y = 15;
 	
-	if (pipe != 'wall') {
+	if (pipe != 'wall' && pipe != 'window') {
 
 		var pipeLength = $( "#pipeLength" ).val();
 		if (pipeLength == "" || !$.isNumeric(pipeLength)) {alert('הכנס אורך צינור (ערך מספרי)');return 'ERROR'; }
@@ -81,9 +81,12 @@ function showResults( whichUse ) {
 		console.log("Checking if: " + Products[i].DisplayName + " matches");
 		console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
 
-		if (((pipe != 'wall') && (Products[i].pipe == true) 
-			|| ((pipe == 'wall') && (Products[i].window == true))) 
-			&& ((Products[i].diameter ==  parseInt(diameter)) || (diameter == 'unknown'))) {
+		if ((((pipe == 'wall') && (Products[i].wall == true)) 
+			|| ((pipe == 'window') && (Products[i].window == true))
+			|| ((pipe == 'soft') && (Products[i].pipe == true))
+			|| ((pipe == 'hard') && (Products[i].pipe == true)))
+			&& ((Products[i].diameter ==  parseInt(diameter)) 
+			|| (diameter == 'unknown'))) {
 	
 			for (var j in Products[i].coordinates){
 			
