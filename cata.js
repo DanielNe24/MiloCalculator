@@ -1,11 +1,11 @@
 function showResults( whichUse ) {
 
 	var length = $( "#length" ).val();
-	if (length == "" || !$.isNumeric(length)) {alert('הכנס אורך (ערך מספרי)');return 'ERROR'; }
+	if (length == "" || !$.isNumeric(length) || length > 99.99) {alert('הכנס אורך (ערך מספרי)');return 'ERROR'; }
 	var width = $( "#width" ).val();
-	if (width == "" || !$.isNumeric(width)) {alert('הכנס רוחב (ערך מספרי)');return 'ERROR'; }
+	if (width == "" || !$.isNumeric(width) || width > 99.99 ) {alert('הכנס רוחב (ערך מספרי)');return 'ERROR'; }
 	var height = $( "#height" ).val();
-	if (height == "" || !$.isNumeric(height)) {alert('הכנס גובה (ערך מספרי)');return 'ERROR'; }
+	if (height == "" || !$.isNumeric(height) || height > 99.99) {alert('הכנס גובה (ערך מספרי)');return 'ERROR'; }
 	var diameter;
 	if ( $( "#diameter" ).val() == null ) 
 		diameter = 'unknown';
@@ -62,16 +62,16 @@ function showResults( whichUse ) {
 	if (pipe != 'wall' && pipe != 'window') {
 
 		var pipeLength = $( "#pipeLength" ).val();
-		if (pipeLength == "" || !$.isNumeric(pipeLength)) {alert('הכנס אורך צינור (ערך מספרי)');return 'ERROR'; }
+		if (pipeLength == "" || !$.isNumeric(pipeLength) || pipeLength > 99.99) {alert('הכנס אורך צינור (ערך מספרי)');return 'ERROR'; }
 		
 		var pipeTurns = $( "#pipeTurns" ).val();
-		if (pipeTurns == "" || !$.isNumeric(pipeTurns)) {alert('הכנס מספר כיפופים (ערך מספרי)');return 'ERROR'; }
-		
+		if (pipeTurns == "" || !$.isNumeric(pipeTurns) || pipeTurns > 99.99 ) {alert('הכנס מספר כיפופים (ערך מספרי)');return 'ERROR'; }
+		var pipeSum = pipeTurns + pipeLength;
 		var contra;
 		if (pipe == 'hard')
-			contra = 2.5;
+			contra = 4;
 		else
-			contra = 5;
+			contra = 8;
 
 		y = 15 + (parseFloat(pipeLength) + parseFloat(pipeTurns)) * parseFloat(contra);
 	}
@@ -108,6 +108,15 @@ function showResults( whichUse ) {
 				}
   			}
   		}
+  	}
+
+  	if (pipeSum > 6) {
+  		arr = ['E-100','E-150','B-10 PLUS','B-15 PLUS','LHV-190','LHV-300'];
+  		for (var i in arr) {
+			var index = $.inArray(arr[i], matches);
+			if (index > 0)
+				matches.splice(index, 1);
+		}
   	}
 
   	return matches;
@@ -220,27 +229,6 @@ function results() {
 		 var slide = document.createElement("div");
 		 slide.setAttribute("class", "swiper-slide");
 		 slide.setAttribute("style", "background-image:url(" + currProd.img + ");max-width: 100%;height: auto;width: auto\9;background-repeat: no-repeat;background-size:100% 100%;");
-		 var title = document.createElement("div");
-		 title.setAttribute("class", "title");
-		 title.setAttribute("data-swiper-parallax", "-100");
-		 title.setAttribute("style", "color:black;");
-		 title.innerHTML = currProd.DisplayName;
-		 slide.appendChild(title);
-		 //var subTitle = document.createElement("div");
-		 //subTitle.setAttribute("class", "subtitle");
-		 //subTitle.setAttribute("data-swiper-parallax", "-200");
-		 //subTitle.setAttribute("style", "color:black;");
-		 //subTitle.innerHTML = "דגם מאוד נחמד";
-		 //slide.appendChild(subTitle);
-		 var description = document.createElement("div");
-		 description.setAttribute("class", "text");
-		 description.setAttribute("data-swiper-parallax", "-300");
-		 description.setAttribute("style", "float:right;");
-		 var text = document.createElement("p");
-		 text.setAttribute("style", "color:black;");
-		 text.innerHTML = "הסבר קצר וטכני על הדגם הנחמד"
-		 description.appendChild(text);
-		 slide.appendChild(description);
 		 $( "#resultsViewer" ).append( slide );
 		 
 		}

@@ -19,14 +19,20 @@
         <div id="console">
         <div class="content">
       <u>גודל החלל:</u>&nbsp&nbsp&nbsp&nbsp
-			אורך  <input type="text" class="textInput" id="length" onchange="calcVol()"> (מ')
-			&nbspרוחב <input type="text" class="textInput" id="width" onchange="calcVol()"> (מ')
-  		&nbspגובה <input type="text" class="textInput" id="height" onchange="calcVol()"> (מ')
+			&nbspאורך<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span>
+   <input type="text" class="textInput" id="length" onchange="calcVol()">(מ')
+			&nbspרוחב<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="width" onchange="calcVol()"> (מ')
+  		&nbspגובה<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="height" onchange="calcVol()"> (מ')
       <hr width="1" size="30">
-      נפח מחושב: <input type="text" class="textInput" id="volume" readonly style="text-align: center;">
+      נפח מחושב&nbsp<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="volume" readonly style="text-align: center;">
   		<hr>
   		<div class="content">
-  סיווג כללי: <select id="generalUse" onchange="fillSelect()">
+  סיווג כללי: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><select id="generalUse" onchange="fillSelect()">
  				<option selected="true" disabled="disabled">בחר סיווג כללי</option>
  				<option value="home">ביתי</option>
  				<option value="office">משרד</option>
@@ -36,7 +42,8 @@
 			</select>
 			<br>
 			<br>
-   סוג החדר: <select id="use"></select>
+   סוג החדר: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><select id="use"></select>
   		</div>
   		<hr>
         <form id="pipe" action="" style="width:80%;margin:0 auto;">
@@ -52,7 +59,8 @@
           </div>
         </form>
         <br>
-  קוטר: <select id="diameter">
+  קוטר: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><select id="diameter">
           <option selected="true" disabled="disabled">בחר קוטר</option>
           <option value="4">4"</option>
           <option value="6">6"</option>
@@ -63,8 +71,10 @@
   		</div>
   		<hr>
   		<div class="content" id="pipeSet">
-  אורך צינור: <input type="text" class="textInput" id="pipeLength">
-&nbsp&nbspמספר כיפופים: <input type="text" class="textInput" id="pipeTurns">
+  אורך צינור: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="pipeLength">
+&nbsp&nbspמספר כיפופים: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="pipeTurns">
   		</div>
   		<div class="contentNotRmv">
   			<button type="button" id='res' onclick="results()">הראה תוצאות</button>
@@ -82,7 +92,9 @@
    		 </div>
    		</div>
    		<hr>
-        <footer style="height:30px;">
+        <footer style="height:110px;">
+        <p>מחשבון זה לא נועד להחליף תכנון הנדסי ע"י מהנדס מוסמך, אלא לחישוב מהיר ולשם הערכה בהתבסס על מספר מרכיבים ולכן יש לבדוק תמיד את התוצאה עם מקורות חלופיים. השימוש באתר הינו במסגרת <a target="_blank" href="http://docdro.id/QoTebtL"><strong>תנאי השימוש</strong></a> בו.</p>
+
         <p style="float: left;">&copy; MiloTrade 2017</p>
         <img src="miloTradeLogo.png" height="30" width="35" style="float: right;"></img>
       	</footer>
@@ -94,6 +106,9 @@
 		<script src="math.js"></script>
 		<script src="data.js"></script>
 		<script src="swiper.min.js"></script>
+    <script src="jquery.balloon.min.js"></script>
+
+    
 
 
   </body>
