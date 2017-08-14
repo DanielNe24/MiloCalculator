@@ -26,7 +26,9 @@ input.textInput {
 }
 
 div.span11 {
-    width: 700px;
+    max-width: 700px;
+    width: auto;
+    height: auto;
     margin:0 auto;
     background: aliceblue;
     padding: 10px;
@@ -124,7 +126,8 @@ body {
 
 .switch-field label {
   display: inline-block;
-  width: 60px;
+  max-width: 60px;
+  width: auto;
   background-color: #e9e7ff;
   color: rgba(0, 0, 0, 0.6);
   font-size: 16px;
