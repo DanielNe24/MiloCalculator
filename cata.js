@@ -242,7 +242,7 @@ function results() {
 	} else {
 		var slide = document.createElement("div");
 		 slide.setAttribute("class", "swiper-slide");
-		 slide.setAttribute("style", "background-image:url(images/NoRes.png);max-width: 100%;height: auto;width: auto\9;");
+		 slide.setAttribute("style", "background-image:url(images/NoRes.png);max-width: 100%;height: auto;width: auto\9;background-repeat: no-repeat;background-size:100% 100%;");
 		 $( "#resultsViewer" ).append( slide );
 	}
 }
