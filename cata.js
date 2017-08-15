@@ -227,7 +227,12 @@ function results() {
 			}
 		 
 		 var slide = document.createElement("div");
-		 slide.setAttribute("class", "swiper-slide");
+		 if (i == 0) 
+		 	slide.setAttribute("class", "swiper-slide swiper-slide-active");
+		else if (i == 1)
+		 	slide.setAttribute("class", "swiper-slide swiper-slide-next");
+		  else 
+		 	slide.setAttribute("class", "swiper-slide");
 		 slide.setAttribute("style", "background-image:url(" + currProd.img + ");max-width: 100%;height: auto;width: auto\9;background-repeat: no-repeat;background-size:100% 100%;");
 		 $( "#resultsViewer" ).append( slide );
 		 
@@ -237,13 +242,7 @@ function results() {
 	} else {
 		var slide = document.createElement("div");
 		 slide.setAttribute("class", "swiper-slide");
-		 slide.setAttribute("style", "background-image:url(http://uri.mitkadem.co.il/blog/white-800x600.gif);max-width: 100%;height: auto;width: auto\9;");
-		 var title = document.createElement("div");
-		 title.setAttribute("class", "title");
-		 title.setAttribute("data-swiper-parallax", "-100");
-		 title.setAttribute("style", "color:black;");
-		 title.innerHTML = "מצטערים לא נמצאו תוצאות.. \n אנא פנה אלינו בלשונית צור קשר";
-		 slide.appendChild(title);
+		 slide.setAttribute("style", "background-image:url(images/NoRes.png);max-width: 100%;height: auto;width: auto\9;");
 		 $( "#resultsViewer" ).append( slide );
 	}
 }
