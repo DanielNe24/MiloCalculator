@@ -198,19 +198,7 @@ function results() {
 		csl.setAttribute("id", "carousel");
 		csl.setAttribute("dir", "rtl");
 		results.appendChild(csl);
-		var button = document.createElement("button");
-		var a = document.createElement("a");
-		button.appendChild(a);
-		results.appendChild(button);
-		button.setAttribute("style","width:100%;background-color: #008CBA;");
-		button.setAttribute("id","exportRes");
-		a.setAttribute("style", "color:white;");
-		a.download = "Cata_Results.txt";
-		a.href = "data:text/plain;base64," + btoa(matches);
-		a.innerHTML = "הורדת תוצאות";
-
-
-
+		
 		for (var i in matches) {
 			console.log("create tab for: " + matches[i])
 			var currProd;
@@ -287,7 +275,7 @@ function fillSelect() {
 	switch ( generalUse ) {
     	case 'home':
         	fillWith = [['שירותים (בלבד)','homeToilet']
-        	,['מקלחת','homeShower'],['מטבח','homeKitchen']
+        	,['מקלחת ושרותים','homeShower'],['מטבח','homeKitchen']
         	,['חדר מגורים','homeLiving'],['חדר כביסה','homeLundry']];
         	break;
     	case 'office':
@@ -316,6 +304,12 @@ function fillSelect() {
     	default:
         	fillWith = [];	 
 	}
+	
+	$( "#use" ).append($("<option></option>")
+                    .attr("selected","true")
+                   	.attr("disabled","disabled")
+                    .text("בחר סיווג משני"));
+
 	for (var i in fillWith) {
 		$( "#use" ).append($("<option></option>")
                     .attr("value",fillWith[i][1])
@@ -345,17 +339,6 @@ function engineerMode() {
 	$( "#forResistance" ).append("Pa: <input type='text' class='textInput' id='resistance'>");
 	$( "#forDiameter" ).append('קוטר: <select id="diameter"><option selected="true" disabled="disabled">בחר קוטר</option><option value="4">4"</option><option value="6">6"</option><option value="8">8"</option><option value="12">12"</option><option value="unknown">לא ידוע</option></select> (צול)');
 	$( "#res" ).attr('onclick', 'engResults()');
-
-}
-
-function calcVol() {
-
-	var width = $( "#width" ).val();
-	var height = $( "#height" ).val();
-	var length = $( "#length" ).val();
-	if (width && height && length) 
-		$( "#volume" ).val(width * height * length); 
-		
 
 }
 
@@ -424,16 +407,6 @@ function engResults() {
 		csl.setAttribute("id", "carousel");
 		csl.setAttribute("dir", "rtl");
 		results.appendChild(csl);
-		var button = document.createElement("button");
-		var a = document.createElement("a");
-		button.appendChild(a);
-		results.appendChild(button);
-		button.setAttribute("style","width:100%;background-color: #008CBA;");
-		button.setAttribute("id","exportRes");
-		a.setAttribute("style", "color:white;");
-		a.download = "Cata_Results.txt";
-		a.href = "data:text/plain;base64," + btoa(matches);
-		a.innerHTML = "הורדת תוצאות";
 
 		for (var i in matches) {
 			console.log("create tab for: " + matches[i])

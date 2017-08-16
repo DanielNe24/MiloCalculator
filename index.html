@@ -17,26 +17,19 @@
 		<div class="header">
       <img style="width: 200px;height: 70px;display:block;margin:auto;" src="logo.png"></img>
         </div>
-        <button class="engineer" id="engineer" onclick="engineerMode()">אני מהנדס</button>
+        <button class="engineer" id="engineer" onclick="engineerMode()">כניסה למהנדסים</button>
         <br>
         <div id="console">
         <div class="content">
-      <u>גודל החלל:</u>&nbsp&nbsp&nbsp&nbsp
-			&nbspאורך<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span>
-   <input type="text" class="textInput" id="length" onchange="calcVol()">(מ')
-			&nbspרוחב<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="width" onchange="calcVol()"> (מ')
-  		&nbspגובה<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="height" onchange="calcVol()"> (מ')
-      <hr width="1" size="30">
-      נפח מחושב&nbsp<span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="volume" readonly style="text-align: center;">
+      <u>גודל החלל:</u> <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span>&nbsp&nbsp&nbsp&nbsp
+			&nbspאורך<input type="text" class="textInput" id="length">(מ')
+			&nbspרוחב<input type="text" class="textInput" id="width"> (מ')
+  		&nbspגובה<input type="text" class="textInput" id="height"> (מ')
        </div>
   		<hr>
   		<div class="content">
-  סיווג כללי: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><select id="generalUse" onchange="fillSelect()">
+  סיווג כללי: <select id="generalUse" onchange="fillSelect()">
  				<option selected="true" disabled="disabled">בחר סיווג כללי</option>
  				<option value="home">ביתי</option>
  				<option value="office">משרד</option>
@@ -46,8 +39,7 @@
 			</select>
 			<br>
 			<br>
-   סוג החדר: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><select id="use"></select>
+   סיווג משני: <select id="use"></select>
   		</div>
       <div class="content">
   		<hr>
@@ -56,16 +48,15 @@
           <input type="radio" name="radio" id="switch_3_left" onclick="hideTab4()" value="wall"/>
           <label for="switch_3_left">קיר חיצוני</label>
           <input type="radio" name="radio" id="switch_3_center1" onclick="hideTab4()" value="window"/>
-          <label for="switch_3_center1">חלון</label>
+          <label for="switch_3_center1">חלון זכוכית</label>
           <input type="radio" name="radio" id="switch_3_center2" onclick="showTab4()" value="hard"/>
           <label for="switch_3_center2">צינור קשיח</label>
           <input type="radio" name="radio" id="switch_3_right" onclick="showTab4()" value="soft"/>
-          <label for="switch_3_right">צינור גמיש</label>
+          <label for="switch_3_right">צינור שרשורי</label>
           </div>
         </form>
         <br>
-  קוטר: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><select id="diameter">
+  קוטר: <select id="diameter">
           <option selected="true" disabled="disabled">בחר קוטר</option>
           <option value="4">4"</option>
           <option value="6">6"</option>
@@ -76,8 +67,8 @@
   		</div>
   		<hr>
   		<div class="content" id="pipeSet">
-  אורך צינור: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
-       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="pipeLength">
+  אורך הצינור: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
+       <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="pipeLength">(מ')
 &nbsp&nbspמספר כיפופים: <span class="tooltip-toggle" data-tooltip="פירוט אודות התכונה">
        <img class="tag" src="images/question-mark.png" width="10px" height="10px"></span><input type="text" class="textInput" id="pipeTurns">
   		</div>
