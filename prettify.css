@@ -2,8 +2,6 @@
   height: auto;
   margin: auto;
   width: 100%;
-  padding: 10px;
-  padding-top: 20px; 
   position:relative;
   text-align:center
 }
@@ -103,7 +101,7 @@ body {
 
 .switch-field {
   font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
-  padding: 40px;
+      width: 80%
     overflow: hidden;
 }
 
