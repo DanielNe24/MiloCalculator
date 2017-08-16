@@ -548,8 +548,8 @@ function ifUnknown(matches){
 			var index = $.inArray('LHV-300', matches);
 			matches.splice(index, 1);
 		}
-		if ( ( $.inArray('CB-100', matches) >= 0 ) && ( $.inArray('CB-100 PLUS', matches) >= 0 ) ) {
-			var index = $.inArray('CB-100 PLUS', matches);
+		if ( ( $.inArray('CB-100', matches) >= 0 ) && ( $.inArray('CB-250 PLUS', matches) >= 0 ) ) {
+			var index = $.inArray('CB-250 PLUS', matches);
 			matches.splice(index, 1);
 		}
 		if ( ( $.inArray('DIL 100/130', matches) >= 0 )) {
