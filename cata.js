@@ -534,25 +534,29 @@ function ifUnknown(matches){
 			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				if (index > 0)
+				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
+		console.log(matches)
 		if ( ( $.inArray('DIL 100/270 Low Speed', matches) >= 0 )) {
 			arr = ['DIL 100/270 High Speed', 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
 			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				if (index > 0)
+				console.log(arr[i])
+				console.log(index)
+				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
+		console.log(matches)
 		if ( ( $.inArray('DIL 100/270 High Speed', matches) >= 0 )) {
 			arr = ['DIL 100/130', 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
 			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				if (index > 0)
+				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
@@ -560,7 +564,7 @@ function ifUnknown(matches){
 			arr = ['DIL 150/560 High Speed','DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				if (index > 0)
+				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
@@ -568,7 +572,7 @@ function ifUnknown(matches){
 			arr = ['DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				if (index > 0)
+				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
@@ -576,7 +580,7 @@ function ifUnknown(matches){
 			arr = ['DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				if (index > 0)
+				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
