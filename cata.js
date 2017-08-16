@@ -1,3 +1,5 @@
+var swiper;
+
 function showResults( whichUse ) {
 
 	var length = $( "#length" ).val();
@@ -124,7 +126,7 @@ function showResults( whichUse ) {
 
 function results() {
 	
-	$( "#resultsViewer" ).empty();
+	$('.carousel').remove();
 	console.log('################################################')
 	console.log('############## Trying by Max Use ###############');
 	console.log('################################################')
@@ -151,17 +153,7 @@ function results() {
 	if (diameter == 'unknown') {
   		ifUnknown(matches);
   	}
-	
-	var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        nested: true,
-        speed: 600,
-        height: 600,
-    });	
-    document.getElementById("container").setAttribute("style", "height:500px")
+    //document.getElementById("container").setAttribute("style", "height:500px")
 
 
 	if  ( matches.length > 0 ) {
@@ -203,16 +195,23 @@ function results() {
 		matches = matches.slice(0, 3);
 
 		var results = document.getElementById("results");
+		var csl = document.createElement("div");
+		csl.setAttribute("class", "carousel");
+		csl.setAttribute("id", "carousel");
+		csl.setAttribute("dir", "rtl");
+		results.appendChild(csl);
 		var button = document.createElement("button");
 		var a = document.createElement("a");
 		button.appendChild(a);
 		results.appendChild(button);
-		button.setAttribute("style","width:100%;background-color: #008CBA;")
-		button.setAttribute("id","exportRes")
-		a.setAttribute("style", "color:white;")
+		button.setAttribute("style","width:100%;background-color: #008CBA;");
+		button.setAttribute("id","exportRes");
+		a.setAttribute("style", "color:white;");
 		a.download = "Cata_Results.txt";
 		a.href = "data:text/plain;base64," + btoa(matches);
 		a.innerHTML = "הורדת תוצאות";
+
+
 
 		for (var i in matches) {
 			console.log("create tab for: " + matches[i])
@@ -227,30 +226,45 @@ function results() {
 			}
 		 
 		 var slide = document.createElement("div");
-		 if (i == 0) 
-		 	slide.setAttribute("class", "swiper-slide swiper-slide-active");
-		else if (i == 1)
-		 	slide.setAttribute("class", "swiper-slide swiper-slide-next");
-		  else 
-		 	slide.setAttribute("class", "swiper-slide");
-		 slide.setAttribute("style", "background-image:url(" + currProd.img + ");max-width: 100%;height: auto;width: auto\9;background-repeat: no-repeat;background-size:100% 100%;");
-		 $( "#resultsViewer" ).append( slide );
+		 slide.setAttribute("class", "carousel-cell");
+		 var img = document.createElement("img");
+		 img.setAttribute("src", currProd.img)
+		 img.setAttribute("alt", currProd.DisplayName)
+		 slide.appendChild(img);
+		 $( "#carousel" ).append( slide );
 		 
 		}
 
-		reinitSwiper(swiper);
 	} else {
-		var slide = document.createElement("div");
-		 slide.setAttribute("class", "swiper-slide");
-		 slide.setAttribute("style", "background-image:url(images/NoRes.png);max-width: 100%;height: auto;width: auto\9;background-repeat: no-repeat;background-size:100% 100%;");
-		 $( "#resultsViewer" ).append( slide );
+		 var slide = document.createElement("div");
+		 slide.setAttribute("class", "carousel-cell");
+		 var img = document.createElement("img");
+		 img.setAttribute("src", "images/NoRes.png")
+		 slide.appendChild(img);
+		 $( "#carousel" ).append( slide );
 	}
-}
 
-function reinitSwiper(swiper) {
-  setTimeout(function () {
-   swiper.update();
-  }, 500);
+	var $carousel = $('.carousel').flickity({
+  		imagesLoaded: true,
+  		rightToLeft: true,
+  		percentPosition: false,
+	});
+
+	var $imgs = $carousel.find('.carousel-cell img');
+	var docStyle = document.documentElement.style;
+	var transformProp = typeof docStyle.transform == 'string' ? 'transform' : 'WebkitTransform';
+	var flkty = $carousel.data('flickity');
+
+	$carousel.on( 'scroll.flickity', function() {
+  		flkty.slides.forEach( function( slide, i ) {
+    		var img = $imgs[i];
+    		var x = ( slide.target + flkty.x ) * -1/3;
+    		img.style[ transformProp ] = 'translateX(' + x  + 'px)';
+  		});
+	});
+
+
+	
 }
 
 function hideTab4() {

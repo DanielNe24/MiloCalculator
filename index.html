@@ -7,6 +7,8 @@
     <link href="prettify.css" rel="stylesheet">
   	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" href="flickity.css" media="screen">
+
 
     <title>Cata Calculator</title>
   </head>
@@ -82,15 +84,8 @@
   		</div>
       <hr>
       <div id="results">
-  		  <div class="swiper-container" id="container" dir="rtl">
-        	<div class="swiper-wrapper" id="resultsViewer">
-        	</div>
-        	<!-- Add Pagination -->
-        	<div class="swiper-pagination swiper-pagination-black"></div>
-        	<!-- Add Navigation -->
-        	<div class="swiper-button-prev swiper-button-black"></div>
-        	<div class="swiper-button-next swiper-button-black"></div>
-   		 </div>
+  		  <div class="carousel" id="carousel" dir="rtl">
+        </div>
    		</div>
    		<hr>
         <footer style="height:120px;">
@@ -108,6 +103,7 @@
 		<script src="data.js"></script>
 		<script src="swiper.min.js"></script>
     <script src="jquery.balloon.min.js"></script>
+    <script src="flickity.js"></script>
 
     
 
