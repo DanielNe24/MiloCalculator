@@ -3,11 +3,11 @@ var swiper;
 function showResults( whichUse ) {
 
 	var length = $( "#length" ).val();
-	if (length == "" || !$.isNumeric(length) || length > 99.99) {alert('הכנס אורך (ערך מספרי)');return 'ERROR'; }
+	if (length == "" || !$.isNumeric(length) || length > 99.99) {alert('הכנס אורך (ערך מספרי עד 99.99)');return 'ERROR'; }
 	var width = $( "#width" ).val();
-	if (width == "" || !$.isNumeric(width) || width > 99.99 ) {alert('הכנס רוחב (ערך מספרי)');return 'ERROR'; }
+	if (width == "" || !$.isNumeric(width) || width > 99.99 ) {alert('הכנס רוחב (ערך מספרי עד 99.99)');return 'ERROR'; }
 	var height = $( "#height" ).val();
-	if (height == "" || !$.isNumeric(height) || height > 99.99) {alert('הכנס גובה (ערך מספרי)');return 'ERROR'; }
+	if (height == "" || !$.isNumeric(height) || height > 99.99) {alert('הכנס גובה (ערך מספרי עד 99.99)');return 'ERROR'; }
 	var diameter;
 	if ( $( "#diameter" ).val() == null ) 
 		diameter = 'unknown';
@@ -64,10 +64,10 @@ function showResults( whichUse ) {
 	if (pipe != 'wall' && pipe != 'window') {
 
 		var pipeLength = $( "#pipeLength" ).val();
-		if (pipeLength == "" || !$.isNumeric(pipeLength) || pipeLength > 99.99) {alert('הכנס אורך צינור (ערך מספרי)');return 'ERROR'; }
+		if (pipeLength == "" || !$.isNumeric(pipeLength) || pipeLength > 99.99) {alert('הכנס אורך צינור (ערך מספרי עד 99.99)');return 'ERROR'; }
 		
 		var pipeTurns = $( "#pipeTurns" ).val();
-		if (pipeTurns == "" || !$.isNumeric(pipeTurns) || pipeTurns > 99.99 ) {alert('הכנס מספר כיפופים (ערך מספרי)');return 'ERROR'; }
+		if (pipeTurns == "" || !$.isNumeric(pipeTurns) || pipeTurns > 99.99 ) {alert('הכנס מספר כיפופים (ערך מספרי עד 99.99)');return 'ERROR'; }
 		var pipeSum = pipeTurns + pipeLength;
 		var contra;
 		if (pipe == 'hard')
