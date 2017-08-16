@@ -127,6 +127,13 @@ function showResults( whichUse ) {
 function results() {
 	
 	$('.carousel').remove();
+	var results = document.getElementById("results");
+	var csl = document.createElement("div");
+	csl.setAttribute("class", "carousel");
+	csl.setAttribute("id", "carousel");
+	csl.setAttribute("dir", "rtl");
+	results.appendChild(csl);
+
 	console.log('################################################')
 	console.log('############## Trying by Max Use ###############');
 	console.log('################################################')
@@ -154,7 +161,6 @@ function results() {
 		diameter = $( "#diameter" ).val();
   	
     //document.getElementById("container").setAttribute("style", "height:500px")
-
 
 	if  ( matches.length > 0 ) {
 
@@ -200,13 +206,6 @@ function results() {
 		else
 			matches = matches.slice(0, 5);
 		
-		var results = document.getElementById("results");
-		var csl = document.createElement("div");
-		csl.setAttribute("class", "carousel");
-		csl.setAttribute("id", "carousel");
-		csl.setAttribute("dir", "rtl");
-		results.appendChild(csl);
-		
 		for (var i in matches) {
 			console.log("create tab for: " + matches[i])
 			var currProd;
@@ -233,7 +232,8 @@ function results() {
 		 var slide = document.createElement("div");
 		 slide.setAttribute("class", "carousel-cell");
 		 var img = document.createElement("img");
-		 img.setAttribute("src", "images/NoRes.png")
+		 img.setAttribute("src", "images/NoRes.png");
+		 img.setAttribute("alt", "NoRes")
 		 slide.appendChild(img);
 		 $( "#carousel" ).append( slide );
 	}
@@ -541,19 +541,15 @@ function ifUnknown(matches){
 					matches.splice(index, 1);
 			}
 		}
-		console.log(matches)
 		if ( ( $.inArray('DIL 100/270 Low Speed', matches) >= 0 )) {
 			arr = ['DIL 100/270 High Speed', 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
 			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
 			for (var i in arr) {
 				var index = $.inArray(arr[i], matches);
-				console.log(arr[i])
-				console.log(index)
 				if (index >= 0)
 					matches.splice(index, 1);
 			}
 		}
-		console.log(matches)
 		if ( ( $.inArray('DIL 100/270 High Speed', matches) >= 0 )) {
 			arr = ['DIL 100/130', 'DIL 150/560 Low Speed', 'DIL 150/560 High Speed'
 			,'DIL 200/910 Low Speed', 'DIL 200/910 High Speed']
