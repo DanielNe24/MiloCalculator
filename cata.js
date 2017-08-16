@@ -133,10 +133,13 @@ function results() {
 	var matches = showResults(1);
 	if (matches == 'ERROR')
 		return;
+	if ( matches.length == 0 ) {
 	console.log('################################################')
 	console.log('############## Trying by Min Use ###############');
 	console.log('################################################')
-	matches = unique(matches.concat(showResults(2)));
+	//matches = unique(matches.concat(showResults(2)));
+	matches = showResults(2);
+	}
 	if ( matches.length == 0 ) {
 		console.log('################################################')
 		console.log('############ Trying by Min Use * 0.8 ###########');
