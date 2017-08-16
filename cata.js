@@ -191,7 +191,12 @@ function results() {
    			return 0 
 		}) 
 
-		matches = matches.slice(0, 5);
+		var pipe = $('input[name=radio]:checked', '#pipe').val();
+		if (pipe == 'wall') 
+			matches = matches.slice(0, 3);
+		else
+			matches = matches.slice(0, 5);
+		
 		var results = document.getElementById("results");
 		var csl = document.createElement("div");
 		csl.setAttribute("class", "carousel");
