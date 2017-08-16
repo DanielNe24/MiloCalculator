@@ -149,9 +149,6 @@ function results() {
 		diameter = 'unknown';
     else 
 		diameter = $( "#diameter" ).val();
-
-
-  	ifUnknown(matches);
   	
     //document.getElementById("container").setAttribute("style", "height:500px")
 
@@ -182,6 +179,8 @@ function results() {
 			matches.splice(index, 1);
 		}
 
+		ifUnknown(matches);
+
 		matches = matches.sort( function(a, b) {
 			a_p = getPriority(a);
 			b_p = getPriority(b);
@@ -193,7 +192,6 @@ function results() {
 		}) 
 
 		matches = matches.slice(0, 5);
-
 		var results = document.getElementById("results");
 		var csl = document.createElement("div");
 		csl.setAttribute("class", "carousel");
