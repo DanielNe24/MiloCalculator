@@ -150,9 +150,9 @@ function results() {
     else 
 		diameter = $( "#diameter" ).val();
 
-	if (diameter == 'unknown') {
-  		ifUnknown(matches);
-  	}
+
+  	ifUnknown(matches);
+  	
     //document.getElementById("container").setAttribute("style", "height:500px")
 
 
@@ -390,10 +390,8 @@ function engResults() {
 
 	if  ( matches.length > 0 ) {
 
-		
-		if (diameter == 'unknown') {
-  			ifUnknown(matches);
-  		}
+  		ifUnknown(matches);
+  	
 
 		if ($('#exportRes').length > 0) {
 			$('#exportRes').remove();
