@@ -192,7 +192,7 @@ function results() {
    			return 0 
 		}) 
 
-		matches = matches.slice(0, 4);
+		matches = matches.slice(0, 5);
 
 		var results = document.getElementById("results");
 		var csl = document.createElement("div");
