@@ -11,7 +11,7 @@ app.use(express.static(__dirname));
 
 app.use(ipgeoblock({
     geolite2: "./GeoLite2-Country.mmdb",
-    allowedCountries: [ "IL" ]
+    allowedCountries: [ "IL" , "US"]
 }));
 
 // Add headers
