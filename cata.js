@@ -358,17 +358,6 @@ function engResults() {
 	var y = $( "#resistance" ).val();
 	if ( y == "" || !$.isNumeric(y)) {alert('Enter numeric Pa');return 'ERROR'; }
 
-
-	var swiper = new Swiper('.swiper-container', {
-        	pagination: '.swiper-pagination',
-        	paginationClickable: true,
-        	nextButton: '.swiper-button-next',
-        	prevButton: '.swiper-button-prev',
-        	nested: true,
-        	speed: 600,
-        	height: 600,
-    });	
-
 	var diameter;
 	if ( $( "#diameter" ).val() == null ) 
 		diameter = 'unknown';
@@ -376,6 +365,14 @@ function engResults() {
 		diameter = $( "#diameter" ).val();
 
 	var matches = showResultsEng(x, y, diameter);
+
+	var results = document.getElementById("results");
+	var csl = document.createElement("div");
+	csl.setAttribute("class", "carousel");
+	csl.setAttribute("id", "carousel");
+	csl.setAttribute("dir", "rtl");
+	results.appendChild(csl);
+
 
 	if  ( matches.length > 0 ) {
 
@@ -409,12 +406,6 @@ function engResults() {
    			return 0 
 		}) 
 
-				var results = document.getElementById("results");
-		var csl = document.createElement("div");
-		csl.setAttribute("class", "carousel");
-		csl.setAttribute("id", "carousel");
-		csl.setAttribute("dir", "rtl");
-		results.appendChild(csl);
 
 		for (var i in matches) {
 			console.log("create tab for: " + matches[i])
