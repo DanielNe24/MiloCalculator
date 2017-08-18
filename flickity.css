@@ -137,19 +137,16 @@ body { font-family: sans-serif; }
 
 .carousel {
   background: #EEE;
+   height: auto\9;
+  width: auto\9;
 }
 
 .carousel-cell {
   margin-right: 20px;
-  height: auto\9;
-  width: auto\9;
 }
 
 .carousel-cell img {
   display: block;
-  height: auto\9;
-  width: auto\9;
-  overflow: visible;
 }
 
 @media screen and ( min-width: 768px ) {
