@@ -141,14 +141,15 @@ body { font-family: sans-serif; }
 
 .carousel-cell {
   margin-right: 20px;
-  height: auto;
+  height: auto\9;
   width: auto\9;
 }
 
 .carousel-cell img {
   display: block;
-  height: auto;
+  height: auto\9;
   width: auto\9;
+  overflow: visible;
 }
 
 @media screen and ( min-width: 768px ) {
