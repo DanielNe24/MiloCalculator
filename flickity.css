@@ -137,8 +137,6 @@ body { font-family: sans-serif; }
 
 .carousel {
   background: #EEE;
-  height: auto;
-  width: auto\9;
 }
 
 .carousel-cell {
@@ -147,6 +145,8 @@ body { font-family: sans-serif; }
 
 .carousel-cell img {
   display: block;
+  height: auto;
+  width: auto;
 }
 
 @media screen and ( min-width: 768px ) {
