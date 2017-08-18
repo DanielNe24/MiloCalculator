@@ -296,3 +296,11 @@ label {
   -webkit-transition: all 0.75s ease;
   transition: all 0.75s ease;
 }
+
+body {
+  background: url("images/bgimage.jpeg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
