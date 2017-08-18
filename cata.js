@@ -316,7 +316,7 @@ function fillSelect() {
 	$( "#use" ).append($("<option></option>")
                     .attr("selected","true")
                    	.attr("disabled","disabled")
-                    .text("בחר סיווג משני"));
+                    .text("-- בחר --"));
 
 	for (var i in fillWith) {
 		$( "#use" ).append($("<option></option>")
