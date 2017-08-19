@@ -151,6 +151,9 @@ function showResults( whichUse ) {
   		}
   	}
 
+  	ProductsWithOtherDiameter[0].diameter = 4;
+  	ProductsWithOtherDiameter[1].diameter = 4;
+
   	if (pipeSum > 6) {
   		arr = ['E-100','E-150','B-10 PLUS','B-15 PLUS','LHV-190','LHV-300'];
   		for (var i in arr) {
