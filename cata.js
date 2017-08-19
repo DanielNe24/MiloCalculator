@@ -257,7 +257,7 @@ function results() {
 		 
 		 var img = document.createElement("img");
 		 img.setAttribute("src", currProd.img)
-		 img.setAttribute("style", "width:auto;padding-bottom: 10px;")
+		 img.setAttribute("style", "width:60%;padding-bottom: 10px;")
 		 $( "#results" ).append( img );
 		 
 		}
