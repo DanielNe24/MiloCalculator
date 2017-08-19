@@ -140,16 +140,10 @@ body { font-family: sans-serif; }
 }
 
 .carousel-cell {
-  margin-right: 20px;
+  width: 100%;
+  margin-right: 10px;
+  border-radius: 5px;
 }
 
-.carousel-cell img {
-  display: block;
-  width: auto;
-}
 
-@media screen and ( min-width: 768px ) {
-  .carousel-cell img {
-    height: 500px;
-  }
-}
+
