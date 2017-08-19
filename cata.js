@@ -77,11 +77,11 @@ function showResults( whichUse ) {
 
 		y = 15 + (parseFloat(pipeLength) + parseFloat(pipeTurns)) * parseFloat(contra);
 	}
-	console.log("User's coordinate is: (" + x + "," + y + ")");
+	//console.log("User's coordinate is: (" + x + "," + y + ")");
 	var matches = [];
 	for (var i in Products) {
-		console.log("Checking if: " + Products[i].DisplayName + " matches");
-		console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
+		//console.log("Checking if: " + Products[i].DisplayName + " matches");
+		//console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
 
 		if ((((pipe == 'wall') && (Products[i].wall == true)) 
 			|| ((pipe == 'window') && (Products[i].window == true))
@@ -99,12 +99,12 @@ function showResults( whichUse ) {
 				var prevCord = Products[i].coordinates[j-1];
 				}	
 				if (x <= currCord[0]) {
-					console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
+					//console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
 					var val = evluateLine(line(prevCord[0],prevCord[1],currCord[0],currCord[1]),x);
-					console.log("Evaluated y is: " + val );
+					//console.log("Evaluated y is: " + val );
 					if (y <= val)  {
 						matches.push(Products[i].DisplayName);
-						console.log("MATCH: " + Products[i].DisplayName);
+						//console.log("MATCH: " + Products[i].DisplayName);
 					}
 					break;
 				}
@@ -119,8 +119,8 @@ function showResults( whichUse ) {
   	ProductsWithOtherDiameter[1].diameter = 6;
 
   	for (var i in ProductsWithOtherDiameter) {
-		console.log("Checking if: " + ProductsWithOtherDiameter[i].DisplayName + " matches");
-		console.log("Products diameter: " + ProductsWithOtherDiameter[i].diameter + " diameter: " + diameter);
+		//console.log("Checking if: " + ProductsWithOtherDiameter[i].DisplayName + " matches");
+		//console.log("Products diameter: " + ProductsWithOtherDiameter[i].diameter + " diameter: " + diameter);
 
 		if ((((pipe == 'wall') && (ProductsWithOtherDiameter[i].wall == true)) 
 			|| ((pipe == 'window') && (ProductsWithOtherDiameter[i].window == true))
@@ -138,12 +138,12 @@ function showResults( whichUse ) {
 				var prevCord = ProductsWithOtherDiameter[i].coordinates[j-1];
 				}	
 				if (x <= currCord[0]) {
-					console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
+					//console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
 					var val = evluateLine(line(prevCord[0],prevCord[1],currCord[0],currCord[1]),x);
-					console.log("Evaluated y is: " + val );
+					//console.log("Evaluated y is: " + val );
 					if (y <= val)  {
 						matches.push(ProductsWithOtherDiameter[i].DisplayName);
-						console.log("MATCH: " + ProductsWithOtherDiameter[i].DisplayName);
+						//console.log("MATCH: " + ProductsWithOtherDiameter[i].DisplayName);
 					}
 					break;
 				}
@@ -171,23 +171,23 @@ function results() {
 	$("#results").empty()
 	var results = document.getElementById("results");
 
-	console.log('################################################')
-	console.log('############## Trying by Max Use ###############');
-	console.log('################################################')
+	//console.log('################################################')
+	//console.log('############## Trying by Max Use ###############');
+	//console.log('################################################')
 	var matches = showResults(1);
 	if (matches == 'ERROR')
 		return;
 	if ( matches.length == 0 ) {
-	console.log('################################################')
-	console.log('############## Trying by Min Use ###############');
-	console.log('################################################')
+	//console.log('################################################')
+	//console.log('############## Trying by Min Use ###############');
+	//console.log('################################################')
 	//matches = unique(matches.concat(showResults(2)));
 	matches = showResults(2);
 	}
 	if ( matches.length == 0 ) {
-		console.log('################################################')
-		console.log('############ Trying by Min Use * 0.8 ###########');
-		console.log('################################################')
+		//console.log('################################################')
+		//console.log('############ Trying by Min Use * 0.8 ###########');
+		//console.log('################################################')
 		matches = showResults(3);
 	}
 
@@ -244,7 +244,7 @@ function results() {
 			matches = matches.slice(0, 5);
 		
 		for (var i in matches) {
-			console.log("create tab for: " + matches[i])
+			//console.log("create tab for: " + matches[i])
 			var currProd;
 			for (var j in Products) {
 
@@ -266,7 +266,7 @@ function results() {
 
 		 var img = document.createElement("img");
 		 img.setAttribute("src", "images/NoRes.png");
-		 img.setAttribute("alt", "NoRes")
+		 img.setAttribute("style", "width:100%;padding-bottom: 10px;")
 		 $( "#results" ).append( img );
 	}
 
@@ -365,7 +365,9 @@ function engineerMode() {
 
 function engResults() {
 
-	$('.carousel').remove();
+	$("#results").empty()
+	var results = document.getElementById("results");
+
 	if ($( "#cfm" ).val() == "" || !$.isNumeric($( "#cfm" ).val())) {alert('Enter numeric CFM');return 'ERROR'; }
 	var x = $( "#cfm" ).val() * 1.7;
 	var y = $( "#resistance" ).val();
@@ -380,12 +382,6 @@ function engResults() {
 	var matches = showResultsEng(x, y, diameter);
 
 	var results = document.getElementById("results");
-	var csl = document.createElement("div");
-	csl.setAttribute("class", "carousel");
-	csl.setAttribute("id", "carousel");
-	csl.setAttribute("dir", "rtl");
-	results.appendChild(csl);
-
 
 	if  ( matches.length > 0 ) {
 
@@ -421,7 +417,7 @@ function engResults() {
 
 
 		for (var i in matches) {
-			console.log("create tab for: " + matches[i])
+			//console.log("create tab for: " + matches[i])
 			var currProd;
 			for (var j in Products) {
 
@@ -432,56 +428,29 @@ function engResults() {
 
 			}
 		 
-		 var slide = document.createElement("div");
-		 slide.setAttribute("class", "carousel-cell");
 		 var img = document.createElement("img");
 		 img.setAttribute("src", currProd.img)
-		 img.setAttribute("alt", currProd.DisplayName)
-		 slide.appendChild(img);
-		 $( "#carousel" ).append( slide );
+		 img.setAttribute("style", "width:100%;padding-bottom: 10px;")
+		 $( "#results" ).append( img );
 		 
 		}
 
 	} else {
-		 var slide = document.createElement("div");
-		 slide.setAttribute("class", "carousel-cell");
 		 var img = document.createElement("img");
-		 img.setAttribute("src", "images/NoRes.png")
-		 slide.appendChild(img);
-		 $( "#carousel" ).append( slide );
+		 img.setAttribute("src", "images/NoRes.png");
+		 img.setAttribute("style", "width:100%;padding-bottom: 10px;")
+		 $( "#results" ).append( img );
 	}
-
-	var $carousel = $('.carousel').flickity({
-  		imagesLoaded: true,
-  		rightToLeft: true,
-  		percentPosition: false,
-	});
-
-	var $imgs = $carousel.find('.carousel-cell img');
-	var docStyle = document.documentElement.style;
-	var transformProp = typeof docStyle.transform == 'string' ? 'transform' : 'WebkitTransform';
-	var flkty = $carousel.data('flickity');
-
-	$carousel.on( 'scroll.flickity', function() {
-  		flkty.slides.forEach( function( slide, i ) {
-    		var img = $imgs[i];
-    		var x = ( slide.target + flkty.x ) * -1/3;
-    		img.style[ transformProp ] = 'translateX(' + x  + 'px)';
-  		});
-	});
-
-
-
 }
 
 function showResultsEng ( x , y, diameter) {
 
 
-	console.log("User's coordinate is: (" + x + "," + y + ")");
+	//console.log("User's coordinate is: (" + x + "," + y + ")");
 	var matches = [];
 	for (var i in Products) {
-		console.log("Checking if: " + Products[i].DisplayName + " matches");
-		console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
+		//console.log("Checking if: " + Products[i].DisplayName + " matches");
+		//console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
 
 		if (((Products[i].diameter ==  parseInt(diameter)) || (diameter == 'unknown'))) {
 	
@@ -494,12 +463,12 @@ function showResultsEng ( x , y, diameter) {
 				var prevCord = Products[i].coordinates[j-1];
 				}	
 				if (x <= currCord[0]) {
-					console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
+					//console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
 					var val = evluateLine(line(prevCord[0],prevCord[1],currCord[0],currCord[1]),x);
-					console.log("Evaluated y is: " + val );
+					//console.log("Evaluated y is: " + val );
 					if (y <= val)  {
 						matches.push(Products[i].DisplayName);
-						console.log("MATCH: " + Products[i].DisplayName);
+						//console.log("MATCH: " + Products[i].DisplayName);
 					}
 					break;
 				}
