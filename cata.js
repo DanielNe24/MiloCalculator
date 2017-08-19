@@ -476,7 +476,50 @@ function showResultsEng ( x , y, diameter) {
   		}
   	}
 
-	return matches;
+  	ProductsWithOtherDiameter = [];
+  	ProductsWithOtherDiameter.push(Products[5]); // CB-250 PLUS 
+  	ProductsWithOtherDiameter.push(Products[7]); // CB-100 PLUS
+  	ProductsWithOtherDiameter[0].diameter = 6;
+  	ProductsWithOtherDiameter[1].diameter = 6;
+
+  	for (var i in ProductsWithOtherDiameter) {
+		//console.log("Checking if: " + ProductsWithOtherDiameter[i].DisplayName + " matches");
+		//console.log("Products diameter: " + ProductsWithOtherDiameter[i].diameter + " diameter: " + diameter);
+
+		if ((((pipe == 'wall') && (ProductsWithOtherDiameter[i].wall == true)) 
+			|| ((pipe == 'window') && (ProductsWithOtherDiameter[i].window == true))
+			|| ((pipe == 'soft') && (ProductsWithOtherDiameter[i].pipe == true))
+			|| ((pipe == 'hard') && (ProductsWithOtherDiameter[i].pipe == true)))
+			&& ((ProductsWithOtherDiameter[i].diameter ==  parseInt(diameter)) 
+			|| (diameter == 'unknown'))) {
+	
+			for (var j in ProductsWithOtherDiameter[i].coordinates){
+			
+				var currCord = ProductsWithOtherDiameter[i].coordinates[j];
+				if (j == 0) {
+					var prevCord = currCord;
+				} else {
+				var prevCord = ProductsWithOtherDiameter[i].coordinates[j-1];
+				}	
+				if (x <= currCord[0]) {
+					//console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
+					var val = evluateLine(line(prevCord[0],prevCord[1],currCord[0],currCord[1]),x);
+					//console.log("Evaluated y is: " + val );
+					if (y <= val)  {
+						matches.push(ProductsWithOtherDiameter[i].DisplayName);
+						//console.log("MATCH: " + ProductsWithOtherDiameter[i].DisplayName);
+					}
+					break;
+				}
+  			}
+  		}
+  	}
+
+  	ProductsWithOtherDiameter[0].diameter = 4;
+  	ProductsWithOtherDiameter[1].diameter = 4;
+
+
+	return unique(matches);
 }
 
 function getPriority( element ) {
