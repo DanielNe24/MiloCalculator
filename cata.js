@@ -168,13 +168,8 @@ function showResults( whichUse ) {
 
 function results() {
 	
-	$('.carousel').remove();
+	$("#results").empty()
 	var results = document.getElementById("results");
-	var csl = document.createElement("div");
-	csl.setAttribute("class", "carousel");
-	csl.setAttribute("id", "carousel");
-	csl.setAttribute("dir", "rtl");
-	results.appendChild(csl);
 
 	console.log('################################################')
 	console.log('############## Trying by Max Use ###############');
@@ -260,44 +255,20 @@ function results() {
 
 			}
 		 
-		 var slide = document.createElement("div");
-		 slide.setAttribute("class", "carousel-cell");
 		 var img = document.createElement("img");
 		 img.setAttribute("src", currProd.img)
 		 img.setAttribute("alt", currProd.DisplayName)
-		 slide.appendChild(img);
-		 $( "#carousel" ).append( slide );
+		 $( "#results" ).append( img );
 		 
 		}
 
 	} else {
-		 var slide = document.createElement("div");
-		 slide.setAttribute("class", "carousel-cell");
+
 		 var img = document.createElement("img");
 		 img.setAttribute("src", "images/NoRes.png");
 		 img.setAttribute("alt", "NoRes")
-		 slide.appendChild(img);
-		 $( "#carousel" ).append( slide );
+		 $( "#results" ).append( img );
 	}
-
-	var $carousel = $('.carousel').flickity({
-  		imagesLoaded: true,
-  		rightToLeft: true,
-  		percentPosition: false,
-	});
-
-	var $imgs = $carousel.find('.carousel-cell img');
-	var docStyle = document.documentElement.style;
-	var transformProp = typeof docStyle.transform == 'string' ? 'transform' : 'WebkitTransform';
-	var flkty = $carousel.data('flickity');
-
-	$carousel.on( 'scroll.flickity', function() {
-  		flkty.slides.forEach( function( slide, i ) {
-    		var img = $imgs[i];
-    		var x = ( slide.target + flkty.x ) * -1/3;
-    		img.style[ transformProp ] = 'translateX(' + x  + 'px)';
-  		});
-	});
 
 
 	

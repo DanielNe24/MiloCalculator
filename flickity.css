@@ -109,7 +109,7 @@ http://flickity.metafizzy.co
   margin: 0;
   list-style: none;
   text-align: center;
-  line-height: 4;
+  line-height: 1;
 }
 
 .flickity-rtl .flickity-page-dots { direction: rtl; }
@@ -128,22 +128,11 @@ http://flickity.metafizzy.co
 .flickity-page-dots .dot.is-selected {
   opacity: 1;
 }
-
-/* external css: flickity.css */
-
-* { box-sizing: border-box; }
-
-body { font-family: sans-serif; }
-
 .carousel {
-  background: #EEE;
+  height: 350px;
 }
 
+/* cell inherit height from carousel */
 .carousel-cell {
-  width: 100%;
-  margin-right: 10px;
-  border-radius: 5px;
+  height: 100%;
 }
-
-
-

@@ -8,6 +8,7 @@
   	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="swiper.min.css">
     <link rel="stylesheet" href="flickity.css" media="screen">
+    <link rel="stylesheet" href="smoothbox.css">
 
 
     <title>Cata Calculator</title>
@@ -78,20 +79,11 @@
   		  <div class="carousel" id="carousel" dir="rtl">
         </div>
    		</div>-->
-         <button id="myBtn">הראה תוצאות</button>
+         <button onclick="results()">הראה תוצאות</button><br><br>
 
-          <div id="myModal" class="modal">
-
-          <!-- Modal content -->
-         <div class="modal-content">
             <div id="results">
-              <div class="carousel" id="carousel" dir="rtl">
               </div>
-            </div>  
-            <span class="close">&times;</span>
-          </div>
         </div>
-</div>
    		<hr>
         <footer style="height:160px;">
         <p>מחשבון זה לא נועד להחליף תכנון הנדסי ע"י מהנדס מוסמך, אלא לחישוב מהיר ולשם הערכה בהתבסס על מספר מרכיבים ולכן יש לבדוק תמיד את התוצאה עם מקורות חלופיים. השימוש באתר הינו במסגרת <a target="_blank" href="http://docdro.id/IxUqkTm"><strong>הוראות ותנאי שימוש</strong></a> בו.</p>
@@ -109,8 +101,7 @@
 		<script src="swiper.min.js"></script>
     <script src="jquery.balloon.min.js"></script>
     <script src="flickity.js"></script>
-
-    
+    <script type="text/javascript" src="smoothbox.min.js"></script>
 
 
   </body>
