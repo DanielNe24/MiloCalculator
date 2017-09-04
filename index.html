@@ -22,13 +22,13 @@
         <div id="console">
         <div class="content">
       <u>גודל החלל:</u> &nbsp&nbsp&nbsp&nbsp
-			<br>&nbspאורך:&nbsp<input type="text" class="textInput" id="length">&nbsp(מ')<br>
-			&nbspרוחב:&nbsp<input type="text" class="textInput" id="width">&nbsp(מ')<br>
-  		&nbspגובה:&nbsp<input type="text" class="textInput" id="height">&nbsp(מ')
+			<br>&nbspאורך:&nbsp<input type="text" class="textInput" id="length" onchange="moveOn(this)" name=1>&nbsp(מ')<br>
+			&nbspרוחב:&nbsp<input type="text" class="textInput" id="width" onchange="moveOn(this)" name=2>&nbsp(מ')<br>
+  		&nbspגובה:&nbsp<input type="text" class="textInput" id="height" onchange="moveOn(this)" name=3>&nbsp(מ')
        </div>
   		<hr>
   		<div class="content">
-  סיווג כללי: <select id="generalUse" onchange="fillSelect()" style="    text-align-last: center;">
+  בחר מיקום החלל: <select name=4 id="generalUse" onchange="fillSelect(),moveOn(this)" style="    text-align-last: center;">
  				<option selected="true" disabled="disabled">-- בחר --</option>
  				<option value="home">ביתי</option>
  				<option value="office">משרד</option>
@@ -38,39 +38,35 @@
 			</select>
 			<br>
 			<br>
-   סיווג משני: <select id="use" style="text-align-last: center;"><option selected="true" disabled="disabled">-- בחר --</option></select>
+   בחר סוג החלל: <select onchange="moveOn(this)" name=5 id="use" style="text-align-last: center;"><option selected="true" disabled="disabled">-- בחר --</option></select>
   		</div>
       <div class="content">
   		<hr>
       <u>צורת התקנה:</u>
-        <form id="pipe" action="" style="width:80%;margin:0 auto;padding-left: 13%;">
-          <div class="switch-field" dir="rtl" style="height:auto;margin:0 auto;">
-          <input type="radio" name="radio" id="switch_3_left" onclick="hideTab4()" value="wall"/>
-          <label for="switch_3_left">קיר חיצוני</label>
-          <input type="radio" name="radio" id="switch_3_center1" onclick="hideTab4()" value="window"/>
-          <label for="switch_3_center1">חלון זכוכית</label>
-          <input type="radio" name="radio" id="switch_3_center2" onclick="showTab4()" value="hard"/>
-          <label for="switch_3_center2">צינור קשיח</label>
-          <input type="radio" name="radio" id="switch_3_right" onclick="showTab4()" value="soft"/>
-          <label for="switch_3_right">צינור שרשורי</label>
-          </div>
-        </form>
-        <br><br><br><br><br>
-          <select id="diameter">
+          <select name=6 id="pipe" onchange="hideOrShowTab4(),moveOn(this)" style="text-align-last: center;">
+        <option selected="true" disabled="disabled">-- בחר --</option>
+        <option value="wall">קיר / תקרה חיצוניים (ללא צינור)</option>
+        <option value="window">חלון זכוכית</option>
+          <option value="hard">צינור קשיח</option>
+        <option value="soft">צינור שרשורי</option>
+      </select>
+        <br><br>
+          <select name=7 id="diameter" onchange="moveOn(this)">
           <option selected="true" disabled="disabled">בחר קוטר</option>
+          <option value="unknown">לא ידוע</option>
           <option value="4">4"</option>
           <option value="6">6"</option>
           <option value="8">8"</option>
           <option value="12">12"</option>
-          <option value="unknown">לא ידוע</option>
         </select> (צול)
   		</div>
   		<hr>
   		<div class="content" id="pipeSet">
-  אורך הצינור:&nbsp<input type="text" class="textInput" id="pipeLength">&nbsp(מ')<br>
-&nbsp&nbspמספר כיפופים:&nbsp<input type="text" class="textInput" id="pipeTurns">
+  אורך הצינור:&nbsp<input name=8 onchange="moveOn(this)" type="text" class="textInput" id="pipeLength">&nbsp(מ')<br>
+&nbsp&nbspמספר כיפופים:&nbsp<input name=9 onchange="moveOn(this)" type="text" class="textInput" id="pipeTurns">
   		</div>
-  		<div class="contentNotRmv">
+      <br>
+  		<div class="contentNotRmv" style="height: auto;margin: auto;width: 100%;padding: 10px;padding-top: 20px; position:relative;text-align:center">
 
         <button class="res" id='res' onclick="results()">הראה תוצאות</button>
 

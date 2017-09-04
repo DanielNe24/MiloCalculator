@@ -16,7 +16,9 @@ function showResults( whichUse ) {
 	
 	var capacity = width * height * length;
 	var use = $( "#use" ).val();
-	
+	if (use == null ) {alert('בחר מיקום וסוג חלל');return 'ERROR'; }
+
+
 	switch(use) {
 
     	case 'homeToilet':Maxuse=10;Minuse=5;break;
@@ -47,7 +49,7 @@ function showResults( whichUse ) {
     	case 'industryLock':Maxuse = 30;Minuse=15;break;
     	case 'industryMachines':Maxuse = 15;Minuse=10;break;
     	case 'poision':Maxuse = 20;Minuse=15;break;
-    	default:Maxuse = 17;Minuse=10;
+    	default:Maxuse = 300000;Minuse=300000;
 	}
 
 	switch(whichUse) {
@@ -58,7 +60,7 @@ function showResults( whichUse ) {
 		default:Maxuse = 17;Minuse=10;
 	}
 	var x = capacity * use;
-	var pipe = $('input[name=radio]:checked', '#pipe').val();
+	var pipe = $( "#pipe" ).val();
 	var y = 15;
 	
 	if (pipe != 'wall' && pipe != 'window') {
@@ -240,6 +242,18 @@ function results() {
 
 
 	
+}
+
+function hideOrShowTab4() {
+	var pipe = $( "#pipe" ).val();
+	switch(pipe) {
+    	case 'wall': hideTab4();break;
+    	case 'window': hideTab4();break;	
+    	case 'hard': showTab4();break;	
+    	case 'soft': showTab4();break;	
+    	default: break;
+    }
+
 }
 
 function hideTab4() {
@@ -520,4 +534,13 @@ function ifUnknown(matches){
 			}
 		}
 
+}
+
+function moveOn( elem ) {
+	
+	var id = parseInt(elem.name) + 1;
+	if ( id == 10 )
+		return;
+	elem.setAttribute("style","border: 1px solid #B0CFE0;");
+	$('[name='+ id + ']')[0].setAttribute("style","border: 4px solid #fb1313;");
 }
