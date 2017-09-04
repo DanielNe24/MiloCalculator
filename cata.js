@@ -115,7 +115,7 @@ function showResults( whichUse ) {
 				var prevCord = Products[i].coordinates[j-1];
 				}	
 				if (x <= currCord[0]) {
-					console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
+					//console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
 					var val = evluateLine(line(prevCord[0],prevCord[1],currCord[0],currCord[1]),x);
 					//console.log("Evaluated y is: " + val );
 					if (y <= val)  {
