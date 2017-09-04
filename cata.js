@@ -137,6 +137,8 @@ function showResults( whichUse ) {
 		Products.pop();
 	}
   	
+	flag = false;
+
   	if (pipeSum > 6) {
   		arr = ['E-100','E-150','B-10 PLUS','B-15 PLUS','LHV-190','LHV-300'];
   		for (var i in arr) {
@@ -224,7 +226,7 @@ function results() {
 		if (pipe == 'wall') 
 			matches = matches.slice(0, 3);
 		else
-			matches = matches.slice(0, 5);
+			matches = matches.slice(0, 3);
 		
 		for (var i in matches) {
 			//console.log("create tab for: " + matches[i])
