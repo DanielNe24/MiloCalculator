@@ -1,4 +1,3 @@
-var swiper;
 
 function showResults( whichUse ) {
 
@@ -18,11 +17,21 @@ function showResults( whichUse ) {
 	var use = $( "#use" ).val();
 	if (use == null ) {alert('בחר מיקום וסוג חלל');return 'ERROR'; }
 
+	var flag = false;
+	E100GTH = {};
+	E100GTH.coordinates = [[0,24],[25,24],[29,24],[30,24],[35,22],[38,20],[43,18],[46,17],[53,16],[58,16],[68,15],[71,15],[81,13],[95,9],[104,6],[111,2],[115,0]];
+	E100GTH.DisplayName = 'E-100GTH';
+	E100GTH.img = 'images/E100GTH.png';
+	E100GTH.window = false;
+	E100GTH.wall = true;
+	E100GTH.pipe = true;
+	E100GTH.diameter = 4;
+	E100GTH.priority = 1;
 
 	switch(use) {
 
     	case 'homeToilet':Maxuse=10;Minuse=5;break;
-    	case 'homeShower':Maxuse = 12;Minuse=8;break;
+    	case 'homeShower':Maxuse = 12;Minuse=8;Products.push(E100GTH);flag=true;break;
     	case 'homeKitchen':Maxuse = 15;Minuse=10;break;
     	case 'homeLiving':Maxuse = 8;Minuse=4;break;
     	case 'homeLundry':Maxuse = 12;Minuse=8;break;
@@ -122,6 +131,10 @@ function showResults( whichUse ) {
   	if (parseInt(diameter) == 6 ) {
 		Products[5].diameter = 4;
 		Products[7].diameter = 4;
+	}	
+
+	if (flag == true) {
+		Products.pop();
 	}
   	
   	if (pipeSum > 6) {
