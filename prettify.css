@@ -45,12 +45,10 @@ ol.linenums li {
 }
 
 select#use {
-  max-width: 150px;
   min-width: 150px;
 }
 
 select#generalUse {
-  max-width: 150px;
   min-width: 150px;
 }
 
