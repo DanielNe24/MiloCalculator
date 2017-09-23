@@ -26,7 +26,7 @@ function showResults( whichUse ) {
 	E100GTH.wall = true;
 	E100GTH.pipe = true;
 	E100GTH.diameter = 4;
-	E100GTH.priority = 1;
+	E100GTH.priority = 0;
 
 	switch(use) {
 
@@ -65,7 +65,7 @@ function showResults( whichUse ) {
 
 		case 1: use=Maxuse;break;
 		case 2: use=Minuse;break;
-		case 3: use=Minuse*0.8;break;
+		case 3: use=Minuse*0.5;break;
 		default:Maxuse = 17;Minuse=10;
 	}
 	var x = capacity * use;
@@ -93,11 +93,11 @@ function showResults( whichUse ) {
 			Products[5].diameter = 6;
 			Products[7].diameter = 6;
 	}
-	//console.log("User's coordinate is: (" + x + "," + y + ")");
+	console.log("User's coordinate is: (" + x + "," + y + ")");
 	var matches = [];
 	for (var i in Products) {
-		//console.log("Checking if: " + Products[i].DisplayName + " matches");
-		//console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
+		console.log("Checking if: " + Products[i].DisplayName + " matches");
+		console.log("Products diameter: " + Products[i].diameter + " diameter: " + diameter);
 
 		if ((((pipe == 'wall') && (Products[i].wall == true)) 
 			|| ((pipe == 'window') && (Products[i].window == true))
@@ -115,12 +115,12 @@ function showResults( whichUse ) {
 				var prevCord = Products[i].coordinates[j-1];
 				}	
 				if (x <= currCord[0]) {
-					//console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
+					console.log("User's x is between: (" + prevCord[0] + "," + prevCord[1] + ") (" + currCord[0] + "," + currCord[1] + ")" );
 					var val = evluateLine(line(prevCord[0],prevCord[1],currCord[0],currCord[1]),x);
-					//console.log("Evaluated y is: " + val );
+					console.log("Evaluated y is: " + val );
 					if (y <= val)  {
 						matches.push(Products[i].DisplayName);
-						//console.log("MATCH: " + Products[i].DisplayName);
+						console.log("MATCH: " + Products[i].DisplayName);
 					}
 					break;
 				}
@@ -326,7 +326,7 @@ function fillSelect() {
 	$( "#use" ).append($("<option></option>")
                     .attr("selected","true")
                    	.attr("disabled","disabled")
-                    .text("-- בחר --"));
+                    .text("-- בחר סוג החלל --"));
 
 	for (var i in fillWith) {
 		$( "#use" ).append($("<option></option>")
