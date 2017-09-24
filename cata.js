@@ -2,11 +2,11 @@
 function showResults( whichUse ) {
 
 	var length = $( "#length" ).val();
-	if (length == "" || !$.isNumeric(length) || length > 99.99) {alert('הכנס אורך (ערך מספרי עד 99.99)');return 'ERROR'; }
+	if (length == "" || !$.isNumeric(length) || length > 99.99) {alert('Please fill all fields.');return 'ERROR'; }
 	var width = $( "#width" ).val();
-	if (width == "" || !$.isNumeric(width) || width > 99.99 ) {alert('הכנס רוחב (ערך מספרי עד 99.99)');return 'ERROR'; }
+	if (width == "" || !$.isNumeric(width) || width > 99.99 ) {alert('Please fill all fields.');return 'ERROR'; }
 	var height = $( "#height" ).val();
-	if (height == "" || !$.isNumeric(height) || height > 99.99) {alert('הכנס גובה (ערך מספרי עד 99.99)');return 'ERROR'; }
+	if (height == "" || !$.isNumeric(height) || height > 99.99) {alert('Please fill all fields.');return 'ERROR'; }
 	var diameter;
 	if ( $( "#diameter" ).val() == null ) 
 		diameter = 'unknown';
@@ -15,7 +15,7 @@ function showResults( whichUse ) {
 	
 	var capacity = width * height * length;
 	var use = $( "#use" ).val();
-	if (use == null ) {alert('בחר מיקום וסוג חלל');return 'ERROR'; }
+	if (use == null ) {alert('Please fill all fields.');return 'ERROR'; }
 
 	var flag = false;
 	E100GTH = {};
@@ -75,10 +75,10 @@ function showResults( whichUse ) {
 	if (pipe != 'wall' && pipe != 'window') {
 
 		var pipeLength = $( "#pipeLength" ).val();
-		if (pipeLength == "" || !$.isNumeric(pipeLength) || pipeLength > 99.99) {alert('הכנס אורך צינור (ערך מספרי עד 99.99)');return 'ERROR'; }
+		if (pipeLength == "" || !$.isNumeric(pipeLength) || pipeLength > 99.99) {alert('Please fill all fields.');return 'ERROR'; }
 		
 		var pipeTurns = $( "#pipeTurns" ).val();
-		if (pipeTurns == "" || !$.isNumeric(pipeTurns) || pipeTurns > 99.99 ) {alert('הכנס מספר כיפופים (ערך מספרי עד 99.99)');return 'ERROR'; }
+		if (pipeTurns == "" || !$.isNumeric(pipeTurns) || pipeTurns > 99.99 ) {alert('Please fill all fields.');return 'ERROR'; }
 		var pipeSum = pipeTurns + pipeLength;
 		var contra;
 		if (pipe == 'hard')
@@ -292,32 +292,32 @@ function fillSelect() {
 	var fillWith;
 	switch ( generalUse ) {
     	case 'home':
-        	fillWith = [['שירותים (בלבד)','homeToilet']
-        	,['מקלחת ושרותים','homeShower'],['מטבח','homeKitchen']
-        	,['חדר מגורים','homeLiving'],['חדר כביסה','homeLundry']];
+        	fillWith = [['Toilet (only)','homeToilet']
+        	,['Shower and toilet','homeShower'],['kitchen','homeKitchen']
+        	,['Living room','homeLiving'],['Laundry room','homeLundry']];
         	break;
     	case 'office':
-      	  	fillWith = [['משרד','office'],['חדר ישיבות','officeMitting']
-      	  	,['שירותים במשרד','officeToilet'],['מסדרון','officeHollway']];
+      	  	fillWith = [['office room','office'],['Meeting Room','officeMitting']
+      	  	,['Services at office','officeToilet'],['corridor','officeHollway']];
         	break;
    		case 'business':
-        	fillWith = [['שירותים בבית עסק','businessToilet']
-        	,['מסעדה/ בית קפה (אזור ההסעדה)','businessRestaurent']
-        	,['מטבח תעשייתי','businessKitchen'],['מספרה','businessBalcony']
-        	,['מכון יופי','businessBeauty'],['מכבסה','businessLundry']
-        	,['מרפאה','businessHealth'],['חנות','businessStore']];
+        	fillWith = [['Services (at business)','businessToilet']
+        	,['Restaurant / Café (restaurant space)','businessRestaurent']
+        	,['Industrial kitchen','businessKitchen'],['hairdressing salon','businessBalcony']
+        	,['Beauty Salon','businessBeauty'],['laundry','businessLundry']
+        	,['clinic','businessHealth'],['store','businessStore']];
         	break;
     	case 'public':
-        	fillWith = [['משרד','office'],['כיתת לימוד','publicClass']
-        	,['ספריה ציבורית','publicLibrary'],['שירותים ציבוריים','businessToilet']
-        	,['אולם ספורט / חדר כושר','publicSport']
-        	,['מלתחות- אזור לוקרים','publicShower']];
+        	fillWith = [['office','office'],['Study class','publicClass']
+        	,['Public library','publicLibrary'],['public toilets','businessToilet']
+        	,['Gym','publicSport']
+        	,['Wardrobes','publicShower']];
         	break; 
         case 'industry':
-        	fillWith = [['מבנה תעשיה','industry']
-        	,['מוסך','industryCar'],['מחסן','industryGarage']
-        	,['מסגריה','industryLock'],['חדר מכונות','industryMachines']
-        	,['מעבדה','poision'],['חלל ייצור','industryMachines']];
+        	fillWith = [['Industrial building','industry']
+        	,['garage','industryCar'],['warehouse','industryGarage']
+        	,["locksmith's workshop",'industryLock'],['machine room','industryMachines']
+        	,['Laboratory','poision'],['Production space','industryMachines']];
         	break; 
     	default:
         	fillWith = [];	 
@@ -326,7 +326,7 @@ function fillSelect() {
 	$( "#use" ).append($("<option></option>")
                     .attr("selected","true")
                    	.attr("disabled","disabled")
-                    .text("-- בחר סוג החלל --"));
+                    .text("-- Select Space Type --"));
 
 	for (var i in fillWith) {
 		$( "#use" ).append($("<option></option>")
@@ -347,15 +347,15 @@ function unique(list) {
 function engineerMode() {
 
 	$(".content").remove();	
-	$( "#engineer" )[0].innerHTML = "חזור למצב רגיל"
+	$( "#engineer" )[0].innerHTML = "Back"
 	$( "#engineer" )[0].setAttribute("onclick","location.reload();")
 
 	var div3 = $( "#console" ).prepend("<div class='content' id='forDiameter'>");
-	var div2 = $( "#console" ).prepend("<div class='content' id='forResistance' dir='ltr'>");
-	var div1 = $( "#console" ).prepend("<div class='content' id='forCfm' dir='ltr'>");
+	var div2 = $( "#console" ).prepend("<div class='content' id='forResistance'>");
+	var div1 = $( "#console" ).prepend("<div class='content' id='forCfm'>");
 	$( "#forCfm" ).append("CFM: <input type='text' class='textInput' id='cfm'>");
 	$( "#forResistance" ).append("Pa: <input type='text' class='textInput' id='resistance'>");
-	$( "#forDiameter" ).append('קוטר: <select id="diameter"><option selected="true" disabled="disabled">בחר קוטר</option><option value="4">4"</option><option value="6">6"</option><option value="8">8"</option><option value="12">12"</option><option value="unknown">לא ידוע</option></select> (צול)');
+	$( "#forDiameter" ).append('Diameter: <select id="diameter"><option selected="true" disabled="disabled">-- Select Diameter --</option><option value="4">4"</option><option value="6">6"</option><option value="8">8"</option><option value="12">12"</option><option value="unknown">לא ידוע</option></select> (inch)');
 	$( "#res" ).attr('onclick', 'engResults()');
 
 }

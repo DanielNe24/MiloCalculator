@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="he">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width">
@@ -8,77 +7,73 @@
   	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="swiper.min.css">
     <link rel="stylesheet" href="flickity.css" media="screen">
-
-
     <title>Cata Calculator</title>
   </head>
   <body onload="loadData()" style="font-size: large;">
-  	<div class="span11" dir="rtl">
+  	<div class="span11">
 		<div class="header">
       <img style="width: 200px;height: 70px;display:block;margin:auto;" src="logo.png"></img>
         </div>
-        <button class="engineer" id="engineer" onclick="engineerMode()">כניסה למהנדסים</button>
+        <button class="engineer" id="engineer" onclick="engineerMode()">Engineers</button>
         <br>
         <div id="console">
         <div class="content">
-      <u>גודל החלל:</u> &nbsp&nbsp&nbsp&nbsp
-			<br>&nbspאורך:&nbsp<input type="text" class="textInput" id="length" onchange="moveOn(this)" name=1>&nbsp(מ')<br>
-			&nbspרוחב:&nbsp<input type="text" class="textInput" id="width" onchange="moveOn(this)" name=2>&nbsp(מ')<br>
-  		&nbspגובה:&nbsp<input type="text" class="textInput" id="height" onchange="moveOn(this)" name=3>&nbsp(מ')
+      <u>Space size:</u> &nbsp&nbsp&nbsp&nbsp
+			<br>&nbspLength:&nbsp<input type="text" class="textInput" id="length" onchange="moveOn(this)" name=1>&nbsp(m)<br>
+			&nbspWidth:&nbsp<input type="text" class="textInput" id="width" onchange="moveOn(this)" name=2>&nbsp(m)<br>
+  		&nbspHeight:&nbsp<input type="text" class="textInput" id="height" onchange="moveOn(this)" name=3>&nbsp(m)
        </div>
   		<hr>
   		<div class="content">
     <select name=4 id="generalUse" onchange="fillSelect(),moveOn(this)" style="    text-align-last: center;">
- 				<option selected="true" disabled="disabled">-- בחר מיקום החלל --</option>
- 				<option value="home">ביתי</option>
- 				<option value="office">משרד</option>
-  				<option value="business">בתי עסק</option>
- 				<option value="public">ציבורי</option>
- 				<option value="industry">תעשייה</option>
+ 				<option selected="true" disabled="disabled">-- Select Space Location --</option>
+ 				<option value="home">Domestic</option>
+ 				<option value="office">Office</option>
+  				<option value="business">Business</option>
+ 				<option value="public">Public</option>
+ 				<option value="industry">Manufacturing</option>
 			</select>
 			<br>
 			<br>
-   <select onchange="moveOn(this)" name=5 id="use" style="text-align-last: center;"><option selected="true" disabled="disabled">-- בחר סוג החלל --</option></select>
+   <select onchange="moveOn(this)" name=5 id="use" style="text-align-last: center;"><option selected="true" disabled="disabled">-- Select Space Type --</option></select>
   		</div>
       <div class="content">
   		<hr>
           <select name=6 id="pipe" onchange="hideOrShowTab4(),moveOn(this)" style="text-align-last: center;">
-        <option selected="true" disabled="disabled">-- בחר צורת התקנה --</option>
-        <option value="wall">קיר / תקרה חיצוניים (ללא צינור)</option>
-        <option value="window">חלון זכוכית</option>
-          <option value="hard">צינור קשיח</option>
-        <option value="soft">צינור שרשורי</option>
+        <option selected="true" disabled="disabled">-- Select installation form --</option>
+        <option value="wall">External wall (without pipe)</option>
+        <option value="window">Glass window</option>
+          <option value="hard">Rigid duct</option>
+        <option value="soft">Flexible tube</option>
       </select>
         <br><br>
           *<select name=7 id="diameter" onchange="moveOn(this)">
-          <option selected="true" disabled="disabled">בחר קוטר</option>
-          <option value="unknown">לא ידוע</option>
+          <option selected="true" disabled="disabled">-- Select Diameter --</option>
+          <option value="unknown">Unknown</option>
           <option value="4">4"</option>
           <option value="6">6"</option>
           <option value="8">8"</option>
           <option value="12">12"</option>
-        </select> (צול)
-        <p></p>
-        <p align="right" style="font-size:70%;">*מומלץ לבחור קוטר רק אם קיימת מגבלה במקום ההתקנה.</p>
+        </select> (inch)
   		</div>
   		<hr>
   		<div class="content" id="pipeSet" style="display: none">
-  אורך הצינור:&nbsp<input name=8 onchange="moveOn(this)" type="text" class="textInput" id="pipeLength">&nbsp(מ')<br>
-&nbsp&nbspמספר כיפופים:&nbsp<input name=9 onchange="moveOn(this)" type="text" class="textInput" id="pipeTurns">
+  Duct length:&nbsp<input name=8 onchange="moveOn(this)" type="text" class="textInput" id="pipeLength">&nbsp(m)<br>
+&nbsp&nbspNumber of turns:&nbsp<input name=9 onchange="moveOn(this)" type="text" class="textInput" id="pipeTurns">
   		</div>
       <br>
   		<div class="contentNotRmv" style="height: auto;margin: auto;width: 100%;padding: 10px;padding-top: 20px; position:relative;text-align:center">
 
-        <button class="res" id='res' onclick="results()">הראה תוצאות</button>
+        <button class="res" id='res' onclick="results()">Show Results</button>
 
             <div id="results">
               </div>
         </div>
           <br><br>
-          <a target="_blank" href="http://www.milotrade.com/" style="display:table;margin: 0 auto;">לפרטים נוספים ונקודות מכירה</a>
+          <a target="_blank" href="http://www.milotrade.com/" style="display:table;margin: 0 auto;">For more details and points of sale</a>
    		<hr>
         <footer style="height:225px;">
-        <p>מחשבון זה לא נועד להחליף תכנון הנדסי ע"י מהנדס מוסמך, אלא לחישוב מהיר ולשם הערכה בהתבסס על מספר מרכיבים ולכן יש לבדוק תמיד את התוצאה עם מקורות חלופיים. השימוש באתר הינו במסגרת <a target="_blank" href="http://docdro.id/IxUqkTm"><strong>הוראות ותנאי שימוש</strong></a> בו.</p>
+        <p>This calculator is not intended to replace engineering design by a qualified engineer, but rather for quick calculation and evaluation based on a number of components, and therefore the result should always be checked with alternative sources.</p>
 
         <p style="float: left;">&copy; MiloTrade 2017</p>
         <img src="miloTradeLogo.png" height="30" width="35" style="float: right;"></img>
