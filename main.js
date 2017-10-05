@@ -1,10 +1,5 @@
 var express = require('express');        
 var app = express();         
-var ipgeoblock = require("node-ipgeoblock");
-app.use(ipgeoblock({
-    geolite2: "./GeoLite2-Country.mmdb",
-    allowedCountries: [ "IL" ]
-}));
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var session = require('express-session')

@@ -355,7 +355,7 @@ function engineerMode() {
 	var div1 = $( "#console" ).prepend("<div class='content' id='forCfm'>");
 	$( "#forCfm" ).append("CFM: <input type='text' class='textInput' id='cfm'>");
 	$( "#forResistance" ).append("Pa: <input type='text' class='textInput' id='resistance'>");
-	$( "#forDiameter" ).append('Diameter: <select id="diameter"><option selected="true" disabled="disabled">-- Select Diameter --</option><option value="4">4"</option><option value="6">6"</option><option value="8">8"</option><option value="12">12"</option><option value="unknown">לא ידוע</option></select> (inch)');
+	$( "#forDiameter" ).append('Diameter: <select id="diameter"><option selected="true" disabled="disabled">-- Select Diameter --</option><option value="4">4"</option><option value="6">6"</option><option value="8">8"</option><option value="12">12"</option><option value="unknown">Unknown</option></select> (inch)');
 	$( "#res" ).attr('onclick', 'engResults()');
 
 }
